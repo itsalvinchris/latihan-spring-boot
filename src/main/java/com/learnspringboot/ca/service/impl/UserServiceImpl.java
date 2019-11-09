@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto getOneUser(int id) {
+    public UserDto getOneUser(Long id) {
         if(userRepository.findById(id).isPresent()){
             User user = userRepository.findById(id).get();
             return new UserDto(user.getName(), user.getUsername(), user.getDateOfBirth());
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto updateUser(int id, CreateUserDto createUserDto) {
+    public UserDto updateUser(Long id, CreateUserDto createUserDto) {
         if(userRepository.findById(id).isPresent()){
             User user = userRepository.findById(id).get();
             user.setName(createUserDto.getName());
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String deleteUser(int id) {
+    public String deleteUser(Long id) {
         if(userRepository.findById(id).isPresent()){
             User user = userRepository.findById(id).get();
             userRepository.delete(user);
